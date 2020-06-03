@@ -1,0 +1,22 @@
+.side-bar
+  .side-bar__header
+    .user-items
+      .user-items__name
+        mesa
+      .user-items__icons
+        = link_to "#", class: "edit-icon" do
+          = icon('far', 'edit')
+          %span<>
+        = link_to "#", class: "cog-icon" do
+          = icon('fas', 'cog')
+  .side-bar__groups
+    .group
+      .group__group--name
+        tech camp
+      .group__group--message-info
+        まだメッセージがありません
+    .group
+      .group__group--name
+        tech camp
+      .group__group--message-info
+        まだメッセージがありません
