@@ -1,0 +1,34 @@
+.main-chat
+  .main-chat__header
+    .group-items
+      .group-items__name
+        test
+      .group-items__member
+        Member : masa
+    %a.edit-btn{href: "#"}
+      Edit
+  .main-chat__messages
+    .message-items
+      .message-items__info
+        .message-items__info--name
+          masa
+        .message-items__info--date
+          2019/11/20(Wed) 17:43:01
+      .message-items__text
+        おはよう！
+    .message-items
+      .message-items__info
+        .message-items__info--name
+          masa
+        .message-items__info--date
+          2019/11/20(Wed) 17:43:34
+      .message-items__text
+        今日は夜から雨
+  .main-chat__footer
+    %form.new_message
+      .message-form
+        %input.message-form__input{placeholder: "type a message"}
+        %label{class: "message-form__image"}
+          =icon('fas', 'image')
+          %input{type: "file"}
+      %input.send-btn{type: "submit", value: "Send"}
