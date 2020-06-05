@@ -1,0 +1,15 @@
+.notification {
+  // 成功時のフラッシュ
+  .notice {
+    background-color: $light_blue;
+    color: $white;
+    text-align: center;
+  }
+
+  // 失敗時のフラッシュ
+  .alert {
+    background-color: $alert_orange;
+    color: $white;
+    text-align: center;
+  }
+}

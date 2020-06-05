@@ -2,12 +2,12 @@
   .side-bar__header
     .user-items
       .user-items__name
-        mesa
+        = current_user.name
       .user-items__icons
         = link_to "#", class: "edit-icon" do
           = icon('far', 'edit')
           %span<>
-        = link_to "#", class: "cog-icon" do
+        = link_to edit_user_path(current_user.id), class: "cog-icon" do
           = icon('fas', 'cog')
   .side-bar__groups
     .group
