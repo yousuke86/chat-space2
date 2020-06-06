@@ -4,19 +4,16 @@
       .user-items__name
         = current_user.name
       .user-items__icons
-        = link_to "#", class: "edit-icon" do
+        = link_to new_group_path, class: "edit-icon" do
           = icon('far', 'edit')
           %span<>
         = link_to edit_user_path(current_user.id), class: "cog-icon" do
           = icon('fas', 'cog')
   .side-bar__groups
-    .group
-      .group__group--name
-        tech camp
-      .group__group--message-info
-        まだメッセージがありません
-    .group
-      .group__group--name
-        tech camp
-      .group__group--message-info
-        まだメッセージがありません
+    - current_user.groups.each do |group|
+      .group
+        = link_to '#' do
+          .group__group--name
+            = group.name
+          .group__group--message-info
+            まだメッセージがありません
