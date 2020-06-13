@@ -9,4 +9,9 @@ class User < ApplicationRecord
   has_many :group_users
 
   validates :name, presence: true, uniqueness: true
+
+  def self.search(search,id)
+    return nil if search == ""
+    User.where(['name LIKE (?)',"%#{search}%"]).where.not(id: id).limit(10)
+  end
 end
