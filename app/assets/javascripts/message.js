@@ -2,7 +2,7 @@ $(function(){
 
   function buildHTML(message){
     if(message.image){
-      let html = `<div class="message-items">
+      let html = `<div class="message-items" data-message-id=${message.id}>
                     <div class="message-items__info">
                       <div class="message-items__info--name">
                         ${message.user_name}
@@ -18,7 +18,7 @@ $(function(){
                   </div>`
     return html;
     } else {
-      let html = `<div class="message-items">
+      let html = `<div class="message-items" data-message-id=${message.id}>
                     <div class="message-items__info">
                       <div class="message-items__info--name">
                         ${message.user_name}
@@ -59,4 +59,32 @@ $(function(){
       alert('メッセージ送信に失敗しました');
     });
   });
+
+
+  let reloadMessages = function(){
+    let last_message_id = $('.message-items:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      if (messages.length !== 0){
+        let insertHTML = '';
+        $.each(messages, function(i,message){
+          insertHTML = insertHTML + buildHTML(message)
+        });
+        $('.main-chat__messages').append(insertHTML);
+        $('.main-chat__messages').animate({ scrollTop: $('.main-chat__messages')[0].scrollHeight});
+      }
+    })
+    .fail(function(){
+      alert('error');
+    });
+  };
+
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
